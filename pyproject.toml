@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "spotify_playlists_extractor"
 version = "0.1.0"
-description = "A python playground."
+description = "This app uses the Spotify API to pull the user's playlists' metadata."
 authors = ["Harry Durnberger <100152207+harryd337@users.noreply.github.com>"]
 packages = [
     { include = "spotify_playlists_extractor", from = "src" },
