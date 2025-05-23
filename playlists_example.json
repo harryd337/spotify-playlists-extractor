@@ -1,0 +1,38 @@
+{
+    "playlists": [
+        {
+            "name": "Playlist 1",
+            "description": "Description 1",
+            "creator": "Creator",
+            "songs": [
+                {
+                    "name": "Song 1",
+                    "artist": "Artist 1",
+                    "album": "Album 1"
+                },
+                {
+                    "name": "Song 2",
+                    "artist": "Artist 2",
+                    "album": "Album 2"
+                }
+            ]
+        },
+        {
+            "name": "Playlist 2",
+            "description": "Description 2",
+            "creator": "Creator",
+            "songs": [
+                {
+                    "name": "Song 1",
+                    "artist": "Artist 1",
+                    "album": "Album 1"
+                },
+                {
+                    "name": "Song 2",
+                    "artist": "Artist 2",
+                    "album": "Album 2"
+                }
+            ]
+        }
+    ]
+}
