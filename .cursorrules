@@ -1,0 +1,4 @@
+- Always use the Google style for writing docstrings
+- NEVER write and perform tests without explicitly being asked to
+- Before running commands in the terminal, you will first need to activate the environment using `. .venv/bin/activate`
+- To add a new package, use `uv add <package>`
