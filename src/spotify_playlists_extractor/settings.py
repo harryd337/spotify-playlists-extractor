@@ -1,4 +1,4 @@
-"""Settings for the spotify_playlists_extractor package."""
+"""Settings for the spotify-playlists-extractor package."""
 
 from functools import cache
 
@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """Settings for the spotify_playlists_extractor package."""
+    """Settings for the spotify-playlists-extractor package."""
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -20,5 +20,5 @@ class Settings(BaseSettings):
 
 @cache
 def get_settings():
-    """Get the settings for the spotify_playlists_extractor package."""
+    """Get the settings for the spotify-playlists-extractor package."""
     return Settings()

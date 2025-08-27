@@ -56,19 +56,19 @@ repos:
         - id: uv-export
 
     # Sphinx documentation building
-    # - repo: local
-    #   hooks:
-    #     - id: sphinx-build
-    #       name: Build Sphinx Documentation
-    #       entry: bash -c 'cd docs && make clean && make html 2>&1 | tee /tmp/sphinx_build.log && ! grep -i "warning\|error" /tmp/sphinx_build.log'
-    #       language: system
-    #       files: ^(docs/|src/zetica_ml/).*$
-    #       pass_filenames: false
-    #       stages: [pre-commit]
-    #     - id: sphinx-apidoc
-    #       name: Generate API Documentation
-    #       entry: bash -c 'cd docs && make apidoc'
-    #       language: system
-    #       files: ^src/zetica_ml/.*\.py$
-    #       pass_filenames: false
-    #       stages: [pre-commit]
+    - repo: local
+      hooks:
+        - id: sphinx-build
+          name: Build Sphinx Documentation
+          entry: bash -c 'cd docs && make clean && make html 2>&1 | tee /tmp/sphinx_build.log && ! grep -i "warning\|error" /tmp/sphinx_build.log'
+          language: system
+          files: ^(docs/|src/spotify_playlists_extractor/).*$
+          pass_filenames: false
+          stages: [pre-commit]
+        - id: sphinx-apidoc
+          name: Generate API Documentation
+          entry: bash -c 'cd docs && make apidoc'
+          language: system
+          files: ^src/spotify_playlists_extractor/.*\.py$
+          pass_filenames: false
+          stages: [pre-commit]

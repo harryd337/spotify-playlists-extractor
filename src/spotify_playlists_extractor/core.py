@@ -1,4 +1,4 @@
-"""Core module for spotify_playlists_extractor."""
+"""Core module for spotify-playlists-extractor."""
 
 import argparse
 

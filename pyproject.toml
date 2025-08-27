@@ -1,7 +1,7 @@
 [project]
-name = "spotify_playlists_extractor"
+name = "spotify-playlists-extractor"
 version = "0.1.0"
-description = "This app uses the Spotify API to pull the user's playlists' metadata."
+description = "A python tool that uses the Spotify API to automatically extract and backup all metadata from your Spotify playlists."
 authors = [
     { name = "Harry Durnberger", email = "100152207+harryd337@users.noreply.github.com" }
 ]
@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [project.scripts]
-spotify_playlists_extractor = "spotify_playlists_extractor.core:main"
+spotify-playlists-extractor = "spotify_playlists_extractor.core:main"
 
 [build-system]
 requires = ["hatchling"]
