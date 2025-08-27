@@ -13,10 +13,9 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore",  # Ignore extra fields that are not defined in the model
     )
-
-    # Spotify API credentials
     SPOTIFY_CLIENT_ID: str
     SPOTIFY_CLIENT_SECRET: str
+    SPOTIFY_REDIRECT_URI: str
 
 
 @cache
