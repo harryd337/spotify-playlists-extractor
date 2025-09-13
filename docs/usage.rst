@@ -17,10 +17,10 @@ Examples
 
 .. code-block:: bash
 
-   # Extract all playlists
+   # Extract first 50 playlists
    spotify-playlists-extractor -o ./backup
 
-   # Extract only 5 playlists
+   # Extract first 5 playlists
    spotify-playlists-extractor -o ./output -l 5
 
 Authentication
