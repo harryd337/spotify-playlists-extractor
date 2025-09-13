@@ -6,7 +6,7 @@ Basic Usage
 
 .. code-block:: bash
 
-   # Extract all playlists
+   # Extract first 50 playlists
    spotify-playlists-extractor -o ./backup
 
    # Extract first 10 playlists
