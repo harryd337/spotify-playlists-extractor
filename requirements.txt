@@ -460,9 +460,9 @@ jupyter-server-terminals==0.5.3 \
     --hash=sha256:41ee0d7dc0ebf2809c668e0fc726dfaf258fcd3e769568996ca731b6194ae9aa \
     --hash=sha256:5ae0295167220e9ace0edcfdb212afd2b01ee8d179fe6f23c899590e9b8a5269
     # via jupyter-server
-jupyterlab==4.4.7 \
-    --hash=sha256:808bae6136b507a4d18f04254218bfe71ed8ba399a36ef3280d5f259e69abf80 \
-    --hash=sha256:8c8e225492f4513ebde9bbbc00a05b651ab9a1f5b0013015d96fabf671c37188
+jupyterlab==4.4.8 \
+    --hash=sha256:81b56f33f35be15150e7ccd43440963a93d2b115ffa614a06d38b91e4d650f92 \
+    --hash=sha256:a89e5a2e9f9295ae039356fc5247e5bfac64936126ab805e3ff8e47f385b0c7e
     # via
     #   jupyter
     #   notebook
@@ -1327,9 +1327,9 @@ sphinxcontrib-serializinghtml==2.0.0 \
     --hash=sha256:6e2cb0eef194e10c27ec0023bfeb25badbbb5868244cf5bc5bdc04e4464bf331 \
     --hash=sha256:e9d912827f872c029017a53f0ef2180b327c3f7fd23c87229f7a8e8b70031d4d
     # via sphinx
-spotipy==2.25.1 \
-    --hash=sha256:18f47d9a0594ced8001b3baa5a4160ea6dcf570abbdad371971f475a81892844 \
-    --hash=sha256:607d3c43722b7e217a7e6c82f17258b798b92a512017d60c06323d62ae814cd7
+spotipy==2.25.2 \
+    --hash=sha256:5ed45c044156ca5518997e2502b1f2c1e7336407cb1fb8fe112d144b4d5282c8 \
+    --hash=sha256:694bc9734d94171716257bf18eea9f1cb2ff8c581e59c74464137433830cf890
     # via spotify-playlists-extractor
 stack-data==0.6.3 \
     --hash=sha256:836a778de4fec4dcd1dcd89ed8abff8a221f58308462e1c4aa2a3cf30148f0b9 \
