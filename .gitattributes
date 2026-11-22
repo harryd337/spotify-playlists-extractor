@@ -1,3 +1,7 @@
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+
 # Normalise line endings of text files to LF for this repo (overrides
 # contributor's autocrlf setting).
 * text=auto
@@ -11,3 +15,4 @@
 # Denote all files that are truly binary and should not be modified.
 *.png binary
 *.jpg binary
+*.jpeg binary

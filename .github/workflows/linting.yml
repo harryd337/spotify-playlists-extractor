@@ -1,0 +1,56 @@
+name: Linting
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+
+      - name: Install python dependencies
+        run: uv sync
+
+      - name: Run ruff check
+        run: uv run pre-commit run ruff-check --all-files
+
+      - name: Run mypy
+        run: uv run pre-commit run mypy --all-files
+
+      - name: Check YAML files
+        run: uv run pre-commit run check-yaml --all-files
+
+      - name: Check TOML files
+        run: uv run pre-commit run check-toml --all-files
+
+      - name: Check JSON files
+        run: uv run pre-commit run check-json --all-files
+
+      - name: Check for large files
+        run: uv run pre-commit run check-added-large-files --all-files
+
+      - name: Check for merge conflicts
+        run: uv run pre-commit run check-merge-conflict --all-files
+
+      - name: Check for debug statements
+        run: uv run pre-commit run debug-statements --all-files
+
+      - name: Check docstring first
+        run: uv run pre-commit run check-docstring-first --all-files
+
+      - name: Run bandit
+        run: uv run pre-commit run bandit

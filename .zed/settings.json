@@ -1,0 +1,8 @@
+{
+  // Completely hidden from Zed. Includes Zed's default exclusions.
+  "file_scan_exclusions": [
+    "**/.env",
+    "**/.secrets",
+    "..."
+  ]
+}
