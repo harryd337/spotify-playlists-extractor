@@ -1,6 +1,6 @@
 [project]
 name = "spotify-playlists-extractor"
-version = "0.1.0"
+version = "0.1.1"
 description = "A python tool that uses the Spotify API to automatically extract and backup all metadata from your Spotify playlists."
 authors = [
     { name = "Harry Durnberger", email = "100152207+harryd337@users.noreply.github.com" }
