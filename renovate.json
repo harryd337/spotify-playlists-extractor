@@ -1,0 +1,47 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "schedule:earlyMondays",
+    ":semanticCommits",
+    ":automergeDigest",
+    ":enablePreCommit"
+  ],
+  "prHourlyLimit": 10,
+  "minimumReleaseAge": "1 week",
+  "gitIgnoredAuthors": [
+    "41898282+github-actions[bot]@users.noreply.github.com"
+  ],
+  "lockFileMaintenance": {
+    "automerge": true
+  },
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "vulnerabilityAlerts": {
+    "dependencyDashboardApproval": false
+  },
+  "packageRules": [
+      {
+        "description": "Branch-stage release-age check lacks timestamps for these update types (renovatebot/renovate#45236); remove after issue is fixed",
+        "matchUpdateTypes": ["digest", "pinDigest", "lockFileMaintenance"],
+        "minimumReleaseAgeBehaviour": "timestamp-optional"
+      },
+      {
+        "description": "Disable python-version updates",
+        "matchFileNames": [".python-version"],
+        "enabled": false
+      },
+      {
+        "description": "Automatically merge devDependencies updates",
+        "matchDepTypes": ["devDependencies"],
+        "automerge": true
+      },
+      {
+        "description": "Automatically merge minor and patch updates",
+        "matchUpdateTypes": ["minor", "patch"],
+        "matchCurrentVersion": "!/^0/",
+        "automerge": true
+      }
+    ]
+}

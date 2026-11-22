@@ -1,0 +1,5 @@
+- Before running commands, activate the virtual environment with ". .venv/bin/activate"
+- To run Python scripts, use "uv run", e.g. "uv run script.py"
+- To run tests, use "uv run pytest"
+- Do not edit the CHANGELOG.md
+- After editing Python, lint with `uv run ruff check --fix <paths>` and format with `uv run ruff format <paths>`, then confirm with `uv run ruff check <paths>`. Type-check with `uv run pre-commit run mypy --files <paths>` (mypy is not installed in the venv). Do not rely on IDE diagnostics; they do not surface Ruff or mypy results. pylint is not part of CI.

@@ -9,7 +9,7 @@ readme = "README.md"
 packages = [
     { include = "spotify_playlists_extractor", from = "src" },
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "jupyter>=1.1.1",
     "pandas>=2.3.1",
@@ -29,8 +29,13 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-    "pre-commit>=4.2.0",
-    "pylint>=3.3.7",
+    "pre-commit>=4.2.0,<5",
+    "pylint>=3.3.7,<5",
+    "pytest-cov>=7.0.0,<8",
+    "ruff>=0.14.3,<1",
+    "types-markdown>=3.10.0.20251106,<4",
+    "pytest-xdist>=3.8.0,<4",
+    "commitizen>=4.16.4,<5",
 ]
 docs = [
     "sphinx-rtd-theme>=3.0.0",
@@ -38,6 +43,7 @@ docs = [
 ]
 
 [tool.mypy]
+python_version = "3.11"
 files = ["src"]
 
 [[tool.mypy.overrides]]
@@ -95,5 +101,23 @@ disable=[
   "R0912",
   "R0913",
   "R1702",
+  "R1705",  # no-else-return: style preference
   "W0718",
+  "W1203",  # logging-fstring-interpolation: f-strings are fine in modern Python
+  "W0621",  # redefined-outer-name: normal in pytest fixtures
+  "W0613",  # unused-argument: common in pytest fixtures
+  "W0404",  # reimported: intentional for avoiding circular imports
+  "C0302",  # too-many-lines: common for test files
+  "C0415",  # import-outside-toplevel: intentional Django/Celery patterns
 ]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "pep440"
+version_provider = "uv"
+update_changelog_on_bump = true
+major_version_zero = true
+
+[tool.uv]
+exclude-newer = "1 week"

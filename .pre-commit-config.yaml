@@ -1,74 +1,82 @@
 default_install_hook_types:
-  - pre-commit
-  - post-checkout
-  - post-merge
-  - post-rewrite
+    - pre-commit
+    - post-checkout
+    - post-merge
+    - post-rewrite
+    - commit-msg
+    - pre-push
 repos:
     # Ruff linting and formatting
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.12.9
+      rev: v0.17.5
       hooks:
-        - id: ruff-check
-          args: [ --fix ]
-        - id: ruff-format
+          - id: ruff-check
+            args: [--fix]
+          - id: ruff-format
 
     # Mypy type checking
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v1.17.1
+      rev: v2.4.1
       hooks:
-        - id: mypy
-          additional_dependencies: [types-toml]
+          - id: mypy
+            language: python
+            additional_dependencies:
+                - types-toml==0.10.8.20260518
+                - types-Markdown==3.11.3.20261108
 
     # Pre-commit hooks
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v6.0.0
       hooks:
-        - id: trailing-whitespace
-        - id: end-of-file-fixer
-        - id: check-yaml
-        - id: check-toml
-        - id: check-json
-        - id: check-added-large-files
-        - id: check-merge-conflict
-        - id: debug-statements
-        - id: check-docstring-first
+          - id: trailing-whitespace
+          - id: end-of-file-fixer
+          - id: check-yaml
+            exclude: ^docker-compose.*\.ya?ml$
+          - id: check-toml
+          - id: check-json
+            exclude: ^\.zed/
+          - id: check-added-large-files
+          - id: check-merge-conflict
+          - id: debug-statements
+          - id: check-docstring-first
 
     # Gitleaks secret detection
     - repo: https://github.com/gitleaks/gitleaks
-      rev: v8.28.0
+      rev: v8.30.1
       hooks:
-        - id: gitleaks
+          - id: gitleaks
 
     # Bandit security linting
     - repo: https://github.com/PyCQA/bandit
-      rev: 1.8.6
+      rev: 1.9.4
       hooks:
-        - id: bandit
-          args: ["-c", "pyproject.toml"]
-          additional_dependencies: ["bandit[toml]"]
+          - id: bandit
+            args: ['-c', 'pyproject.toml']
 
     # uv hooks for dependency management
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.8.11
+      rev: 0.13.9
       hooks:
-        - id: uv-lock
-        - id: uv-sync
-        - id: uv-export
+          - id: uv-lock
+          - id: uv-sync
 
-    # Sphinx documentation building
+    # lint-staged for JavaScript (runs Prettier + ESLint)
     - repo: local
       hooks:
-        - id: sphinx-build
-          name: Build Sphinx Documentation
-          entry: bash -c 'cd docs && make clean && make html 2>&1 | tee /tmp/sphinx_build.log && ! grep -i "warning\|error" /tmp/sphinx_build.log'
-          language: system
-          files: ^(docs/|src/spotify_playlists_extractor/).*$
-          pass_filenames: false
-          stages: [pre-commit]
-        - id: sphinx-apidoc
-          name: Generate API Documentation
-          entry: bash -c 'cd docs && make apidoc'
-          language: system
-          files: ^src/spotify_playlists_extractor/.*\.py$
-          pass_filenames: false
-          stages: [pre-commit]
+          - id: git-lfs-pre-push
+            name: git lfs pre-push
+            entry: bash -c 'git lfs pre-push "${PRE_COMMIT_REMOTE_NAME:?}" "${PRE_COMMIT_REMOTE_URL:?}"'
+            language: system
+            pass_filenames: false
+            always_run: true
+            stages:
+                - pre-push
+
+    # Commitizen for commit standardisation
+    - repo: https://github.com/commitizen-tools/commitizen
+      rev: v4.19.3
+      hooks:
+          - id: commitizen
+          - id: commitizen-branch
+            stages:
+                - pre-push
