@@ -53,4 +53,4 @@ jobs:
         run: uv run pre-commit run check-docstring-first --all-files
 
       - name: Run bandit
-        run: uv run pre-commit run bandit
+        run: uv run pre-commit run bandit --all-files
