@@ -16,7 +16,9 @@ def _build_session(retries: int = DEFAULT_RETRIES) -> Session:
     """Build a requests session that retries transient network failures.
 
     Unlike spotipy's default session, this enables retries on read timeouts so
-    that a single slow response does not abort a long extraction run.
+    that a single slow response does not abort a long extraction run. Only
+    idempotent methods are retried (urllib3's default), so a retried request
+    cannot replay a non-idempotent write such as a POST.
 
     Args:
         retries (int): The number of times to retry a failed request.
@@ -30,7 +32,6 @@ def _build_session(retries: int = DEFAULT_RETRIES) -> Session:
         read=retries,
         status=retries,
         backoff_factor=0.3,
-        allowed_methods=frozenset(["GET", "POST", "PUT", "DELETE"]),
         status_forcelist=spotipy.Spotify.default_retry_codes,
     )
     session = Session()
